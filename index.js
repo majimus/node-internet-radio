@@ -50,7 +50,7 @@ function getStationInfo(url, callback, method) {
   @returns -> mixed (object if successful, string if error)
   */
   async function findStation(url) {
-    this.results = await V1(url);
+    this.results = await Icy(url);
     // Find which provider has our station
     if (this.results == null || typeof this.results == 'undefined') {
       this.results = await V2(url);
@@ -59,7 +59,7 @@ function getStationInfo(url, callback, method) {
       this.results = await Ice(url);
     }
     if (this.results == null || typeof this.results == 'undefined') {
-      this.results = await Icy(url);
+      this.results = await V1(url);
     }
     return this.results;
 
